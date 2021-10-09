@@ -9,23 +9,34 @@
             </a>
             <div class="container">
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
-                    <li><a href="sass.html">Parcourir la bibliothèque</a></li>
-                    <li><a href="badges.html">Prêts en cours</a></li>
+                    <li><a href={{ url('app_login') }}>Parcourir la bibliothèque</a></li>
+                    {% if app.user %}
+                        <li><a href={{ url('app_login') }}>Prêts en cours</a></li>
+                    {% endif %}
                 </ul>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="sass.html">Se connecter</a></li>
-                    <li><a href="badges.html">Créer un compte</a></li>
-                    <li><a href="sass.html">Information sur le compte</a></li>
-                    <li><a href="badges.html">Se déconnecter</a></li>
+                    {% if app.user %}
+                        <li><a href={{ url('app_login') }}>Information sur le compte</a></li>
+                        <li><a href={{ url('app_logout') }}>Se déconnecter</a></li>
+                    {% else %}
+                        <li><a href={{ url('app_login') }}>Se connecter</a></li>
+                        <li><a href={{ url('app_register') }}>Créer un compte</a></li>
+                    {% endif %}
+
                 </ul>
             </div>
 
         </div>
     </nav>
     <ul class="sidenav" id="mobile-links">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">JavaScript</a></li>
+        {% if app.user %}
+            <li><a href={{ url('app_login') }}>Prêts en cours</a></li>
+            <li><a href={{ url('app_logout') }}>Information sur le compte</a></li>
+            <li><a href={{ url('app_logout') }}>Se déconnecter</a></li>
+        {% else %}
+            <li><a href={{ url('app_login') }}>Se connecter</a></li>
+            <li><a href={{ url('app_register') }}>Créer un compte</a></li>
+        {% endif %}
     </ul>
 
 

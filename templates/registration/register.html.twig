@@ -3,15 +3,31 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+<div class="row">
+    <div class="col s6 offset-s3 m6 offset-m3 white z-depth-3">
+        <h4>Inscrivez-vous</h4>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.nom, {
+                label: 'Votre nom'
+            }) }}
+            {{ form_row(registrationForm.prenom, {
+                label: 'Votre prenom'
+            }) }}
+            {{ form_row(registrationForm.email, {
+                label: 'Votre e-mail'
+            }) }}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+            {{ form_row(registrationForm.plainPassword) }}
+            <p>
+                <label>
+                    <input type="checkbox"  required />
+                    <span>J'autorise ce site à conserver mes données transmises via ce formulaire. Aucune exploitation commerciale ne sera faite des données conservées.</span>
+                </label>
+            </p>
+            <button type="submit" class="btn">Inscription</button>
+        {{ form_end(registrationForm) }}
+    </div>
+</div>
+
 {% endblock %}
