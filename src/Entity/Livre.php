@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Livre
  *
  * @ORM\Table(name="livre", indexes={@ORM\Index(name="IDX_AC634F993375BD21", columns={"editeur_id"}), @ORM\Index(name="IDX_AC634F99D9F966B", columns={"description_id"}), @ORM\Index(name="IDX_AC634F999357758E", columns={"langue"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=App\Repository\LivreRepository::class)
  */
 class Livre
 {

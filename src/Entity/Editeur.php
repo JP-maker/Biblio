@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Editeur
  *
  * @ORM\Table(name="editeur")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=App\Repository\EditeurRepository::class)
  */
 class Editeur
 {

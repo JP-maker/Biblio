@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Description
  *
  * @ORM\Table(name="description")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=App\Repository\DescriptionRepository::class)
  */
 class Description
 {

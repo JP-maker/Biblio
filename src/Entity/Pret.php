@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Pret
  *
  * @ORM\Table(name="pret", indexes={@ORM\Index(name="IDX_52ECE979FB88E14F", columns={"utilisateur_id"}), @ORM\Index(name="IDX_52ECE9795843AA21", columns={"exemplaire_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=App\Repository\PretRepository::class)
  */
 class Pret
 {

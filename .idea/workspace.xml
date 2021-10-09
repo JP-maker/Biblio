@@ -2,18 +2,45 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76861a18-d2ad-4b3d-a838-a392deb53299" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20211009100033.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/bck.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/books.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/img-home.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/BookController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/AuteurRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/BibliothequeRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/DescriptionRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/EditeurRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/ExemplaireRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/GenreRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/LangueRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/LivreRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/ParagrapheRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/PretRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/book/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/partials/_navbar.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/user/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Auteur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Auteur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Bibliotheque.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Bibliotheque.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Description.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Description.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Editeur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Editeur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Exemplaire.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Exemplaire.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Genre.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Genre.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Langue.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Langue.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Livre.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Livre.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Paragraphe.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Paragraphe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Pret.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Pret.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/ResetPasswordRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/ResetPasswordRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Utilisateur.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UtilisateurRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +50,13 @@
   <component name="ComposerSettings" doNotAsk="true">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -175,6 +209,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -189,7 +224,7 @@
       <updated>1633714291025</updated>
       <workItem from="1633714292254" duration="1455000" />
       <workItem from="1633768862584" duration="1186000" />
-      <workItem from="1633770071985" duration="1078000" />
+      <workItem from="1633770071985" duration="15989000" />
     </task>
     <servers />
   </component>

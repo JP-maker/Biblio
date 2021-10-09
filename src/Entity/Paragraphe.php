@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Paragraphe
  *
  * @ORM\Table(name="paragraphe", indexes={@ORM\Index(name="IDX_4C1BA9B6D9F966B", columns={"description_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=App\Repository\ParagrapheRepository::class)
  */
 class Paragraphe
 {
