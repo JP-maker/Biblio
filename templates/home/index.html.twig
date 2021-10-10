@@ -13,6 +13,9 @@
     <div class="col s6 offset-s3 m6 offset-m3 white z-depth-3">
         <h3 class="center-align">Bienvenue sur "Biblio"</h3>
         <h4 class="center-align">Le site de la bibliothèque de "Pontault-Combault"</h4>
+        {% if app.user %}
+            <p class="center-align">Ravi de vous revoir {{ app.user.prenom }}</p>
+        {% endif %}
         <img class="responsive-img" src={{ asset('img/img-home.jpg') }} height="400px" width="auto alt="femme qui porte des livres"/>
     </div>
 </div>

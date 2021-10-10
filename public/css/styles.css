@@ -29,3 +29,13 @@ body {
 form {
     padding-bottom: 10px;
 }
+a {
+    margin-bottom: 10px;
+}
+.info {
+    color: gray;
+    font-weight: bold;
+}
+.waves-effect {
+    height: auto;
+}

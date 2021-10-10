@@ -1,20 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserController!{% endblock %}
+{% block title %}Vos informations{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="row">
+        <div class="col s6 offset-s3 m6 offset-m3 white z-depth-3">
+            <h4>Vos informations</h4>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+            <div class="input-field col s12">
+                <input type="text" id="autocomplete-input" disabled class="autocomplete" value="{{ app.user.prenom }}">
+                <label for="autocomplete-input">Votre prénom :</label>
+            </div>
+            <div class="input-field col s12">
+                <input type="text" id="autocomplete-input" disabled class="autocomplete" value="{{ app.user.nom }}">
+                <label for="autocomplete-input">Votre nom :</label>
+            </div>
+            <div class="input-field col s12">
+                <input type="text" id="autocomplete-input" disabled class="autocomplete" value="{{ app.user.email }}">
+                <label for="autocomplete-input">Votre e-mail :</label>
+            </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/3man/PhpstormProjects/Biblio/src/Controller/UserController.php'|file_link(0) }}">src/Controller/UserController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/3man/PhpstormProjects/Biblio/templates/user/index.html.twig'|file_link(0) }}">templates/user/index.html.twig</a></code></li>
-    </ul>
-</div>
+            <a href="{{ path('edit_user') }}" class="waves-effect waves-light btn">Modifier votre compte</a>
+
+        </div>
+    </div>
+
+
 {% endblock %}

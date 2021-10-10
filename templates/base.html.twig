@@ -20,16 +20,22 @@
 
     </head>
     <body>
-        {% include('partials/_navbar.html.twig') %}
+        {% include('_partials/_navbar.html.twig') %}
         {% block body %}{% endblock %}
-
-
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script>
+
+            document.addEventListener('DOMContentLoaded', function() {
+                var elems = document.querySelectorAll('select');
+                var instances = M.FormSelect.init(elems, options);
+            });
+
             $(document).ready(function () {
                 $(".sidenav").sidenav();
+                $('input#input_text, textarea#textarea2').characterCounter();
+                $('select').formSelect();
             });
         </script>
         {% block javascripts %}

@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Pret;
+use App\Entity\Utilisateur;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -17,6 +18,24 @@ class PretRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Pret::class);
+    }
+    public function searchAllBooks(Utilisateur $user)
+    {
+        return $this->createQueryBuilder('p')
+            ->join('p.exemplaire', 'e')
+            ->join('e.isbn','l')
+            ->addSelect('e')
+            ->addSelect('l')
+            ->join('l.auteur', 'a')
+            ->addSelect('a')
+            ->join('l.editeur','ed')
+            ->addSelect('ed')
+            ->join('l.genre','g')
+            ->addSelect('g')
+            ->where('p.utilisateur = :util')
+            ->setParameter('util', $user)
+            ->getQuery()
+            ->execute();
     }
 
     // /**

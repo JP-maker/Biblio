@@ -81,7 +81,7 @@ class Livre
      *   }
      * )
      */
-    private $nom;
+    private $genre;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -99,12 +99,28 @@ class Livre
     private $auteur;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Bibliotheque", inversedBy="isbn")
+     * @ORM\JoinTable(name="exemplaire",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="isbn", referencedColumnName="isbn")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="bibliotheque", referencedColumnName="nom")
+     *   }
+     * )
+     */
+    private $exemplaire;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->nom = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->genre = new \Doctrine\Common\Collections\ArrayCollection();
         $this->auteur = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->exemplaire = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getIsbn(): ?string
@@ -175,23 +191,23 @@ class Livre
     /**
      * @return Collection|Genre[]
      */
-    public function getNom(): Collection
+    public function getGenre(): Collection
     {
-        return $this->nom;
+        return $this->genre;
     }
 
-    public function addNom(Genre $nom): self
+    public function addGenre(Genre $genre): self
     {
-        if (!$this->nom->contains($nom)) {
-            $this->nom[] = $nom;
+        if (!$this->genre->contains($genre)) {
+            $this->genre[] = $genre;
         }
 
         return $this;
     }
 
-    public function removeNom(Genre $nom): self
+    public function removeGenre(Genre $genre): self
     {
-        $this->nom->removeElement($nom);
+        $this->genre->removeElement($genre);
 
         return $this;
     }
@@ -216,6 +232,30 @@ class Livre
     public function removeAuteur(Auteur $auteur): self
     {
         $this->auteur->removeElement($auteur);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Exemplaire[]
+     */
+    public function getExemplaire(): Collection
+    {
+        return $this->exemplaire;
+    }
+
+    public function addExemplaire(Bibliotheque $exemplaire): self
+    {
+        if (!$this->exemplaire->contains($exemplaire)) {
+            $this->exemplaire[] = $exemplaire;
+        }
+
+        return $this;
+    }
+
+    public function removeExemplaire(Bibliotheque $exemplaire): self
+    {
+        $this->exemplaire->removeElement($exemplaire);
 
         return $this;
     }

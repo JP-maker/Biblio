@@ -9,14 +9,14 @@
             </a>
             <div class="container">
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
-                    <li><a href={{ url('app_login') }}>Parcourir la bibliothèque</a></li>
+                    <li><a href={{ url('book') }}>Parcourir la bibliothèque</a></li>
                     {% if app.user %}
-                        <li><a href={{ url('app_login') }}>Prêts en cours</a></li>
+                        <li><a href={{ url('loan') }}>Prêts en cours</a></li>
                     {% endif %}
                 </ul>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     {% if app.user %}
-                        <li><a href={{ url('app_login') }}>Information sur le compte</a></li>
+                        <li><a href={{ url('user') }}>Information sur le compte</a></li>
                         <li><a href={{ url('app_logout') }}>Se déconnecter</a></li>
                     {% else %}
                         <li><a href={{ url('app_login') }}>Se connecter</a></li>
@@ -30,8 +30,8 @@
     </nav>
     <ul class="sidenav" id="mobile-links">
         {% if app.user %}
-            <li><a href={{ url('app_login') }}>Prêts en cours</a></li>
-            <li><a href={{ url('app_logout') }}>Information sur le compte</a></li>
+            <li><a href={{ url('loan') }}>Prêts en cours</a></li>
+            <li><a href={{ url('user') }}>Information sur le compte</a></li>
             <li><a href={{ url('app_logout') }}>Se déconnecter</a></li>
         {% else %}
             <li><a href={{ url('app_login') }}>Se connecter</a></li>

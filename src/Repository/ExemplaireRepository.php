@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Exemplaire;
+use App\Entity\Pret;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -17,6 +18,26 @@ class ExemplaireRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Exemplaire::class);
+    }
+    public function searchAllBookBiblio()
+    {
+
+        $em = $this->getEntityManager();
+
+        $subQuery = $em->createQueryBuilder()
+            ->select('p')
+            ->from('App\Entity\Pret', 'p')
+            ->getDQL()
+        ;
+
+        $query = $em->createQueryBuilder();
+        $query->Select('e')
+            ->from('App\Entity\Exemplaire', 'e')
+            ->where($query->expr()->notIn('e.id', $subQuery))
+        ;
+
+        return  $query->getQuery()->getResult();
+
     }
 
     // /**

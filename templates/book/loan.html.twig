@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos livres{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col s12 m6 offset-m3">
+            {% for pret in prets %}
+                <div class="card horizontal">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/100/190" alt="photo du livre">
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <h3>{{ pret.exemplaire.isbn.titre }}</h3>
+                            <div class="row">
+                                <div class="col s7">
+                                    <p>Genre : <span class="info">{{ pret.exemplaire.isbn.genre[0].nom }}</span></p>
+                                </div>
+                                <div class="col s4">
+                                    <p>Par : <span class="info">{{ pret.exemplaire.isbn.auteur[0].prenom }} {{ pret.exemplaire.isbn.auteur[0].nom }}</span></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s7">
+                                    <p>Date de publication : <span class="info">{{ pret.exemplaire.isbn.datePublication|date("d/m/Y") }}</span> </p>
+                                </div>
+                                <div class="col s4">
+                                    <p>Editeur : <span class="info">{{ pret.exemplaire.isbn.editeur.nom }}</span></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s7">
+                                    <p>ISBN : <span class="info">
+                                            {{ pret.exemplaire.isbn.isbn[0:3] }}-{{ pret.exemplaire.isbn.isbn[3:1] }}-{{ pret.exemplaire.isbn.isbn[4:4] }}-{{ pret.exemplaire.isbn.isbn[8:4] }}-{{ pret.exemplaire.isbn.isbn[12:] }}
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-action">
+
+                            <div class="row">
+                                <div class="col m6 s12">
+                                    <p>Début du prêt : <span class="info">{{ pret.dateDebut|date("d/m/Y") }}</span> - Fin du prêt : <span class="info">{{ pret.dateFin|date("d/m/Y") }}</span></p>
+                                </div>
+                                <div class="col m5 s12">
+                                    {% if pret.renouvele == true %}
+                                        <a href="{{ path('more_loan', {'id': pret.id }) }}" class="waves-effect waves-light btn-large">Prolonger la période de prêt</a>
+                                    {% else %}
+                                        <a href="" class="disabled waves-effect waves-light btn-large">Vous ne pouvez pas prolonger deux fois</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}
