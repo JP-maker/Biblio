@@ -1,32 +1,32 @@
 
 <div class="row">
-    <div class="col m12 white">
+    <div class="col m12 blue-grey lighten-5 z-depth-3">
         <div class="row">
-            <form>
-                <h5>Votre recherche :</h5>
+            <form  method="POST" action="{{path('book')}}">
+                <h5 id="h5-search">Votre recherche :</h5>
                 <div class="input-field col s12 m3">
-                    <input type="text" id="titre" class="validate">
+                    <input type="text" id="titre" name="titre" class="validate" value="{{ (posts) ? posts['titre'] : '' }}">
                     <label for="titre">Titre</label>
                 </div>
                 <div class="input-field col s12 m3">
-                    <input type="text" id="auteur" class="validate">
+                    <input type="text" id="auteur" name="auteur" class="validate" value="{{ (posts) ? posts['auteur'] : '' }}">
                     <label for="auteur">Auteur</label>
                 </div>
                 <div class="input-field col s12 m2">
-                    <select>
-                        <option value="" disabled selected>Quel genre ?</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
+                    <select id="genre" name="genre">
+                        <option value="" selected></option>
+                        {% for genre in genres %}
+                            <option value="{{ genre.nom }}" {{ (posts and posts['genre'] == genre.nom) ? 'selected' : '' }}>{{ genre.nom }}</option>
+                        {% endfor %}
                     </select>
                     <label>Genre</label>
                 </div>
                 <div class="input-field col s12 m2">
-                    <select>
-                        <option value="" disabled selected>Quelle langue ?</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
+                    <select id="langue" name="langue">
+                        <option value="" selected></option>
+                        {% for langue in langues %}
+                            <option value="{{ langue.nom }}" {{ (posts and posts['langue'] == langue.nom) ? 'selected' : '' }}>{{ langue.nom }}</option>
+                        {% endfor %}
                     </select>
                     <label>Langue</label>
                 </div>

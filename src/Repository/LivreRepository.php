@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Livre;
+use App\Service\StringFormatService;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use PhpParser\Node\Expr\Array_;
 
 /**
  * @method Livre|null find($id, $lockMode = null, $lockVersion = null)
@@ -14,9 +16,11 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class LivreRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    private StringFormatService $stringFormatService;
+    public function __construct(ManagerRegistry $registry, StringFormatService $stringFormatService)
     {
         parent::__construct($registry, Livre::class);
+        $this->stringFormatService = $stringFormatService;
     }
 
     public function searchAllBooks()
@@ -34,6 +38,41 @@ class LivreRepository extends ServiceEntityRepository
             ->addSelect('b')
             ->getQuery()
             ->execute();
+    }
+
+    public function searchAllBooksWithFilters(Array $posts)
+    {
+        $query = $this->createQueryBuilder('l')
+            ->join('l.auteur', 'a')
+            ->addSelect('a')
+            ->join('l.editeur','e')
+            ->addSelect('e')
+            ->join('l.genre','g')
+            ->addSelect('g')
+            ->join('l.description','d')
+            ->addSelect('d')
+            ->join('l.exemplaire','b')
+            ->addSelect('b');
+
+        if ($posts['titre'] != null) {
+            $strSearch = $this->stringFormatService->prepareStrForSearch($posts['titre']);
+            $query->where('upper(l.titre) LIKE :titre')
+                ->setParameter('titre', '%'.$strSearch.'%');
+        }
+        if ($posts['auteur'] != null) {
+            $strSearch = $this->stringFormatService->prepareStrForSearch($posts['auteur']);
+            $query->andWhere('CONCAT(upper(a.prenom), upper(a.nom)) LIKE :auteur')
+                ->setParameter('auteur', '%'.$strSearch.'%');
+        }
+        if ($posts['genre'] != null) {
+            $query->andWhere('g.nom = :genre')
+                ->setParameter('genre', $posts['genre']);
+        }
+        if ($posts['langue'] != null) {
+            $query->andWhere('l.langue = :langue')
+                ->setParameter('langue', $posts['langue']);
+        }
+        return   $query->getQuery()->execute();
     }
 
     // /**

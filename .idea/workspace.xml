@@ -2,34 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76861a18-d2ad-4b3d-a838-a392deb53299" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/book/_partials/search.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/book/loan.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/user/edit.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Command/VerifLoansCommand.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/StringFormatService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/BookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BookController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Livre.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Livre.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/BibliothequeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/BibliothequeRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ExemplaireRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ExemplaireRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/LivreRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/LivreRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PretRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PretRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/book/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/partials/_navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_partials/_navbar.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_partials/_navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_partials/_navbar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/book/_partials/search.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book/_partials/search.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" doNotAsk="true">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -224,7 +212,10 @@
       <workItem from="1633714292254" duration="1455000" />
       <workItem from="1633768862584" duration="1186000" />
       <workItem from="1633770071985" duration="26917000" />
-      <workItem from="1633853022434" duration="29096000" />
+      <workItem from="1633853022434" duration="29429000" />
+      <workItem from="1633892782651" duration="37000" />
+      <workItem from="1633968912716" duration="5134000" />
+      <workItem from="1633975466766" duration="2151000" />
     </task>
     <servers />
   </component>

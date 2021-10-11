@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Livre;
 use App\Entity\Exemplaire;
 use App\Entity\Pret;
+use App\Entity\Genre;
+use App\Entity\Langue;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,20 +17,47 @@ class BookController extends AbstractController
     /**
      * @Route("/book", name="book")
      */
-    public function index(): Response
+    public function index(Request $request): Response
     {
-
-        $books = $this->getDoctrine()
-            ->getRepository(Livre::class)
-            ->searchAllBooks();
-
         $exemplaires = $this->getDoctrine()
             ->getRepository(Exemplaire::class)
             ->searchAllBookBiblio();
+        $posts = "";
+        // If we coming after click on searh button
+        if($request->isMethod('post')){
+            $posts = $request->request->all();
+
+            if ($posts['titre'] == "" && $posts['auteur'] == "" && $posts['genre'] == "" && $posts['langue'] == "") {
+                $books = $this->getDoctrine()
+                    ->getRepository(Livre::class)
+                    ->searchAllBooks();
+
+            } else {
+                $books = $this->getDoctrine()
+                    ->getRepository(Livre::class)
+                    ->searchAllBooksWithFilters($posts);
+            }
+
+        } else {
+            $books = $this->getDoctrine()
+                ->getRepository(Livre::class)
+                ->searchAllBooks();
+        }
+
+        $genres = $this->getDoctrine()
+            ->getRepository(Genre::class)
+            ->findAll();
+
+        $langues = $this->getDoctrine()
+            ->getRepository(Langue::class)
+            ->findAll();
 
         return $this->render('book/index.html.twig', [
             'books' => $books,
-            'exemplaires' => $exemplaires
+            'exemplaires' => $exemplaires,
+            'genres' => $genres,
+            'langues' => $langues,
+            'posts' => $posts,
         ]);
     }
 

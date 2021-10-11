@@ -29,6 +29,7 @@
         </div>
     </nav>
     <ul class="sidenav" id="mobile-links">
+        <li><a href={{ url('book') }}>Parcourir la bibliothèque</a></li>
         {% if app.user %}
             <li><a href={{ url('loan') }}>Prêts en cours</a></li>
             <li><a href={{ url('user') }}>Information sur le compte</a></li>
