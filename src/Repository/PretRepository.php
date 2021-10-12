@@ -38,6 +38,21 @@ class PretRepository extends ServiceEntityRepository
             ->execute();
     }
 
+    public function checkBooksNeedToBack()
+    {
+        return $this->createQueryBuilder('p')
+            ->join('p.utilisateur', 'u')
+            ->addSelect('u')
+            ->join('p.exemplaire', 'e')
+            ->addSelect('e')
+            ->join('e.isbn','l')
+            ->addSelect('l')
+            ->where('p.dateFin < :now')
+            ->setParameter('now', new \DateTime('now'))
+            ->getQuery()
+            ->execute();
+    }
+
     // /**
     //  * @return Pret[] Returns an array of Pret objects
     //  */

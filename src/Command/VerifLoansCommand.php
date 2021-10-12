@@ -8,18 +8,21 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 
 class VerifLoansCommand extends Command
 {
-    //https://symfony.com/doc/current/the-fast-track/fr/24-cron.html
-    //https://openclassrooms.com/forum/sujet/symfony-4-creer-une-tache-cron
-    private $commentRepository;
 
-    protected static $defaultName = 'app:comment:cleanup';
+    private PretRepository $pretRepository;
+    private MailerInterface $mailer;
 
-    public function __construct(PretRepository $commentRepository)
+    protected static $defaultName = 'app:checkreturn';
+
+    public function __construct(PretRepository $pretRepository, MailerInterface $mailer)
     {
-        $this->commentRepository = $commentRepository;
+        $this->pretRepository = $pretRepository;
+        $this->mailer = $mailer;
 
         parent::__construct();
     }
@@ -35,15 +38,26 @@ class VerifLoansCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        if ($input->getOption('dry-run')) {
-            $io->note('Dry mode enabled');
-
-            $count = $this->commentRepository->countOldRejected();
-        } else {
-            $count = $this->commentRepository->deleteOldRejected();
+        $result = $this->pretRepository->checkBooksNeedToBack();
+        if ($result) {
+            foreach ($result as $pret) {
+                $display[] = $pret->getUtilisateur()->getEmail();
+                $email = (new Email())
+                    ->from('noreply@bilbioPC.fr')
+                    ->to($pret->getUtilisateur()->getEmail())
+                    ->priority(Email::PRIORITY_HIGH)
+                    ->subject('Votre période de prêt est dépassée')
+                    ->html('<p>Bonjour '.$pret->getUtilisateur()->getPrenom().',</p>
+                        <p>Il est temps de nous retourner le livre '.$pret->getExemplaire()->getIsbn()->getTitre().'</p>
+                        <p>En effet, la période de prêt se terminait le '.$pret->getDateFin()->format('d/m/Y').'</p>
+                        <p>Merci à vous et à très bientot.</p>
+                        <p>Votre bibliothèque</p>');
+                /* No send. Because need to have a smtp
+                $this->mailer->send($email);
+                */
+            }
         }
-
-        $io->success(sprintf('Deleted "%d" old rejected/spam comments.', $count));
+        $io->success('Check done. Id(s) : '.implode(",",$display));
 
         return 0;
     }
