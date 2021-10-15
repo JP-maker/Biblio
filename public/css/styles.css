@@ -42,3 +42,7 @@ a {
 #h5-search {
     padding-left: 10px;
 }
+.chart {
+  width: 100%;
+    height: 100%;
+}
